@@ -11,7 +11,12 @@ const SIDE = 6
 const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
 
 class App extends Component {
-  cards = this.generateCards()
+  state = {
+    cards: this.generateCards(),
+    currentPair: [],
+    guesses: 0,
+    matchedCardIndices: [],
+  }
 
   generateCards() {
     const result = []
@@ -35,7 +40,7 @@ class App extends Component {
     return (
       <div className="memory">
         <GuessCount guesses={0} />
-        {this.cards.map((card, index) => (
+        {this.state.cards.map((card, index) => (
           <Card 
             card={card} 
             feedback="visible" 

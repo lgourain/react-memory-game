@@ -16,6 +16,7 @@ class App extends Component {
     const result = []
     const size = SIDE * SIDE
     const candidates = shuffle(SYMBOLS)
+
     while (result.length < size) {
       const card = candidates.pop()
       result.push(card, card)
@@ -34,7 +35,7 @@ class App extends Component {
         <GuessCount guesses={0} />
         {this.cards.map((card, index) => (
           <Card 
-            card="😀" 
+            card={card} 
             feedback="visible" 
             key={index}
             onClick={this.handleCardClick} />

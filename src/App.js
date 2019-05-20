@@ -46,8 +46,19 @@ class App extends Component {
   }
 
   // Arrow fx for binding
-  handleCardClick = (card) => {
-    console.log(card, 'clicked');
+  handleCardClick = index => {
+    const { currentPair } = this.state
+
+    if (currentPair.length === 2) {
+      return
+    }
+
+    if (currentPair.length === 0) {
+      this.setState({ currentPair: [index] })
+      return
+    }
+
+    this.handleNewPairClosedBy(index)
   }
 
   render() {
@@ -59,7 +70,8 @@ class App extends Component {
         {cards.map((card, index) => (
           <Card 
             card={card} 
-            feedback={this.getFeedbackForCard(index)} 
+            feedback={this.getFeedbackForCard(index)}
+            index={index}
             key={index}
             onClick={this.handleCardClick} />
         ))}

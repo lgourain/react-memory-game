@@ -2,10 +2,14 @@ import React from 'react'
 
 import './HallOfFame.css'
 
-const HallOfFame = ({ entries }) => (
+const HallOfFame = ({ date, guesses, id, player }) => (
   <table className="hallOfFame">
     <tbody>
-      <tr>FIXME</tr>
+      <tr key={id}>
+        <td className="date">{date}</td>
+        <td className="guesses">{guesses}</td>
+        <td className="player">{player}</td>
+      </tr>
     </tbody>
   </table>
 )

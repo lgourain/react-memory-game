@@ -36,11 +36,12 @@ class App extends Component {
   }
 
   render() {
-    const won = new Date().getSeconds() % 2 === 0
+    const { cards, guesses, matchedCardIndices } = this.state
+    const won = matchedCardIndices.length === cards.length
     return (
       <div className="memory">
-        <GuessCount guesses={0} />
-        {this.state.cards.map((card, index) => (
+        <GuessCount guesses={guesses} />
+        {cards.map((card, index) => (
           <Card 
             card={card} 
             feedback="visible" 

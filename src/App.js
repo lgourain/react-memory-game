@@ -30,6 +30,21 @@ class App extends Component {
     return shuffle(result)
   }
 
+  getFeedbackForCard(index) {
+    const { currentPair, matchedCardIndices } = this.state
+    const indexMatched = matchedCardIndices.includes(index)
+
+    if (currentPair.length < 2) {
+      return indexMatched || index === currentPair[0] ? 'visible' : 'hidden'
+    }
+
+    if (currentPair.includes(index)) {
+      return indexMatched ? 'justMatched' : 'justMismatched'
+    }
+
+    return indexMatched ? 'visible' : 'hidden'
+  }
+
   // Arrow fx for binding
   handleCardClick = (card) => {
     console.log(card, 'clicked');
@@ -44,7 +59,7 @@ class App extends Component {
         {cards.map((card, index) => (
           <Card 
             card={card} 
-            feedback="visible" 
+            feedback={this.getFeedbackForCard(index)} 
             key={index}
             onClick={this.handleCardClick} />
         ))}

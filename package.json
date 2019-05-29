@@ -16,7 +16,9 @@
     "dirty-chai": "^2.0.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "sinon": "^7.3.2",
+    "sinon-chai": "^3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

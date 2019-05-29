@@ -17,4 +17,13 @@ describe('<Card />', () => {
         expect(onClick).to.have.been.calledWith(0)
     })
 
+    it('should match its reference snapshot', () => {
+        const onClick = sinon.spy()
+        const wrapper = shallow(
+            <Card card="😁" feedback="hidden" index={0} onClick={onClick} />
+        )
+
+        expect(wrapper).to.matchSnapshot()
+    })
+
 })
